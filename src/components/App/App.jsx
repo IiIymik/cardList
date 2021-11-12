@@ -6,7 +6,7 @@ import CardGallery from 'components/CardGallery/CardGallery';
 import { Modal } from 'components/Modal/Modal';
 import { ModalCard } from 'components/ModalCard/ModalCard';
 import Button  from 'components/Button/Button';
-// import SpinLoader from 'components/SpinLoader/SpinLoader.jsx';
+import SpinLoader from 'components/SpinLoader/SpinLoader.jsx';
 
 function App() {
   const [data, setData] = useState(null);
@@ -44,6 +44,7 @@ function App() {
   return (
     <Container>
       <CardGallery data={data} onClick={handleOnCard} />
+      {reqStatus.PENDING === status && <SpinLoader/>}
       <Button colorBg="#4BCFA0" colorTx='#ffffff' handelBtn={handleCheapestBtn}>Buy cheapest</Button>
       {showModal && <Modal onClose={toggleShowModal}><ModalCard data={currentCard}/></Modal>}
     </Container>
